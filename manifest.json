@@ -1,11 +1,18 @@
 {
-  "name": "Allways show Salesforce Api Names",
-  "description": "This extensions shows the API names of all fields and objects in page layouts in Salesforce. (Is required to have Maven Tools Chrome extension installed and Quick Menu enabled)",
-  "version": "1.0.0",
-  "manifest_version": 3,
-  "action": {},
-  "permissions": ["activeTab", "scripting"],
-  "background": {
-    "service_worker": "main.js"
-  }
+    "name": "Allways show Salesforce Api Names",
+    "description": "This extensions shows the API names of all fields and objects in page layouts in Salesforce. (Is required to have Maven Tools Chrome extension installed and Quick Menu enabled)",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "permissions": ["activeTab", "scripting", "tabs"],
+    "host_permissions": ["*://*/*"],
+    "background": {
+        "service_worker": "main.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>", "*://*/*"],
+            "js": ["content.js"]
+        }
+    ],
+    "action": {}
 }
